@@ -64,7 +64,7 @@ const cardClass =
  ******************************/
 async function getGlobalVisitorCount(): Promise<number> {
   try {
-    const res = await fetch("/.netlify/functions/visitor-count", {
+    const res = await fetch("/api/visitor-count", {
       method: "GET",
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);

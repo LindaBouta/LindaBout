@@ -1,26 +1,12 @@
-import fs from "fs";
-import path from "path";
+import { kv } from "@vercel/kv";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
-const FILE_PATH = path.join(process.cwd(), "visitor-data.json");
-
-export default function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
-    // Check if file exists
-    if (!fs.existsSync(FILE_PATH)) {
-      fs.writeFileSync(FILE_PATH, JSON.stringify({ count: 0 }, null, 2));
-    }
-
-    // Read current count
-    const data = JSON.parse(fs.readFileSync(FILE_PATH, "utf8"));
-    data.count = (data.count || 0) + 1;
-
-    // Write new count
-    fs.writeFileSync(FILE_PATH, JSON.stringify(data, null, 2));
-
-    res.status(200).json({ count: data.count });
+    const count = await kv.incr("visitor_count");
+    res.status(200).json({ count });
   } catch (err) {
-    console.error("Error in visitor-count:", err);
+    console.error("KV error:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 }

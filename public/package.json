@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "extract:atom": "node extract-atom.cjs",
+    "build": "tsc -b && vite build"
+  }
+}

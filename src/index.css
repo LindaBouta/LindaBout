@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+/* optional: smooth scroll for anchor links */
+html { scroll-behavior: smooth; }
+h1, h2, h3, .font-display {
+  letter-spacing: -0.02em;
+}
+p, span, input, textarea, button {
+  letter-spacing: -0.01em;
+}
+button:hover, .btn:hover {
+  cursor: pointer; /* or grab, zoom-in, pointer, etc. */
+}

@@ -1,0 +1,21 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Constantine",
+			"country": {
+				"code": "DZ",
+				"name": "Algeria"
+			},
+			"subdivision": {
+				"code": "25",
+				"name": "Constantine"
+			},
+			"timezone": "Africa/Algiers",
+			"latitude": 36.3758,
+			"longitude": 6.6083,
+			"postalCode": "25000"
+		},
+		"timestamp": 1762162211281
+	},
+	"siteId": "dbb3a55b-38b9-45dc-8a10-d094afd34aef"
+}

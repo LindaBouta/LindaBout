@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  functions = "netlify/functions"
+  publish = "dist"
+
+[dev]
+  command = "npm run dev"
+  targetPort = 5173
+  port = 8888
+  framework = "vite"
+
+[functions]
+  directory = "netlify/functions"
+
+[[kv_namespaces]]
+  name = "site_metrics"
+  id = "site_metrics"

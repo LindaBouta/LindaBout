@@ -1,0 +1,51 @@
+functionsDirectory = "E:\\1.MyWebsite\\lindabout\\netlify\\functions"
+functionsDirectoryOrigin = "config"
+plugins = []
+headers = []
+
+[build]
+publish = "E:\\1.MyWebsite\\lindabout\\dist"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "npm run build"
+functions = "E:\\1.MyWebsite\\lindabout\\netlify\\functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[dev]
+command = "npm run dev"
+targetPort = 5173.0
+port = 8888.0
+framework = "vite"
+
+[[kv_namespaces]]
+name = "site_metrics"
+id = "site_metrics"
+
+[functions]
+
+[functions."*"]
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]

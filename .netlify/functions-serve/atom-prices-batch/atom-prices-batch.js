@@ -1,0 +1,1 @@
+module.exports = require('./1.MyWebsite/netlify/functions/atom-prices-batch.js')

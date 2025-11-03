@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "endAt": "2025-11-05T23:59:59Z",
+    "version": 4
+  },
+  "items": [
+    { "name": "PlumberInSydney.com", "percentOff": 20 },
+    { "name": "LegalFirmLondon.com", "amountOff": 200 },
+    { "name": "ClimateFinance.io", "percentOff": 15 }
+  ]
+}

@@ -463,7 +463,7 @@ export default function App() {
                     className="mt-3 w-full rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 text-white"
                   >
                     <a
-                      href={`mailto:lindaboutamine@lindabout.com?subject=${encodeURIComponent(
+                      href={`mailto:boutamine.linda.dev@gmail.com?subject=${encodeURIComponent(
                         d.name + " discount"
                       )}&body=${encodeURIComponent("Hi Linda,\n\nI'm interested in " + d.name + ".")}`}
                     >
@@ -552,7 +552,7 @@ export default function App() {
                 seamlessly.
               </p>
               <p className="text-neutral-100 flex items-center gap-2 mb-2 justify-center md:justify-start">
-                <Mail className="h-4 w-4" /> lindaboutamine@lindabout.com
+                <Mail className="h-4 w-4" /> boutamine.linda.dev@gmail.com
               </p>
               <p className="text-neutral-100 flex items-center gap-2 justify-center md:justify-start">
                 <Phone className="h-4 w-4" /> +44 7424 646361
@@ -577,7 +577,7 @@ export default function App() {
                     const message = (form.elements.namedItem("message") as HTMLTextAreaElement)?.value;
                     const subject = `Inquiry from ${name || "website visitor"}`;
                     const body = `Hi Linda,\n\nName: ${name}\nEmail: ${email}\nCompany: ${company}\n\nMessage:\n${message}`;
-                    window.location.href = `mailto:lindaboutamine@lindabout.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    window.location.href = `mailto:boutamine.linda.dev@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                   }}
                 >
                   <Input name="name" placeholder="Your name" className="border-neutral-300 text-neutral-900" required />
@@ -633,7 +633,7 @@ export default function App() {
                   className="flex-1 rounded-full bg-gradient-to-r from-violet-500 to-cyan-500 text-white py-3 text-base font-semibold shadow-md hover:shadow-lg hover:scale-105 transition-transform"
                 >
                   <a
-                    href={`mailto:lindaboutamine@lindabout.com?subject=${encodeURIComponent(
+                    href={`mailto:boutamine.linda.dev@gmail.com?subject=${encodeURIComponent(
                       "Domain shortlist request"
                     )}&body=${encodeURIComponent(
                       "Hi Linda,\n\nNiche: \nCity: \nBudget: \n\nPlease send me options."

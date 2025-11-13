@@ -15,20 +15,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    // Get team ID and project ID from environment variables
-    const teamId = process.env.VERCEL_TEAM_ID;
-    const projectId = process.env.VERCEL_PROJECT_ID;
-    const token = process.env.VERCEL_API_TOKEN;
+    const teamId = process.env.VERCEL_TEAM_ID || 'team_nD2bci00idbqzYclEwlCMHT2';
+    const projectId = process.env.VERCEL_PROJECT_ID || 'prj_sfd7VUTew35JJBE23omf8i268sGp';
+    const token = process.env.VERCEL_API_TOKEN || '1mPatKzTOP9WxXfgYFW64geC';
 
-    if (!token || !teamId || !projectId) {
-      return res.status(500).json({ 
-        error: 'Missing configuration',
-        count: 0 
-      });
+    if (!token) {
+      console.error('Missing VERCEL_API_TOKEN');
+      return res.status(200).json({ count: 0 });
     }
 
-    // Call Vercel Analytics API
-    const analyticsUrl = `https://api.vercel.com/v1/analytics/${teamId}/${projectId}/views`;
+    // Get analytics data from Vercel
+    const since = Date.now() - (30 * 24 * 60 * 60 * 1000); // Last 30 days
+    const analyticsUrl = `https://api.vercel.com/v1/analytics?projectId=${projectId}&teamId=${teamId}&since=${since}`;
     
     const response = await fetch(analyticsUrl, {
       headers: {
@@ -37,20 +35,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
 
     if (!response.ok) {
-      throw new Error(`Analytics API error: ${response.status}`);
+      console.error(`Analytics API error: ${response.status}`);
+      return res.status(200).json({ count: 0 });
     }
 
     const data = await response.json();
     
-    // Sum up all views
-    const totalViews = data.views?.reduce((sum: number, item: any) => sum + (item.count || 0), 0) || 0;
+    // Calculate total visitors
+    const totalVisitors = data.visitors || data.total || 0;
 
-    return res.status(200).json({ count: totalViews });
+    return res.status(200).json({ count: totalVisitors });
   } catch (error) {
     console.error('Analytics error:', error);
-    return res.status(500).json({ 
-      error: 'Failed to fetch analytics',
-      count: 0 
-    });
+    return res.status(200).json({ count: 0 });
   }
 }

@@ -133,6 +133,11 @@ async function safeJsonFetch<T = any>(url: string): Promise<T | null> {
 export default function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showExit, setShowExit] = useState(false);
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
+  
+  useEffect(() => {
+    setVisitorCount(getVisitorCount());
+  }, []);
   
   const [showNavbar, setShowNavbar] = useState(true);
 
@@ -270,13 +275,6 @@ export default function App() {
             Linda Boutamine · Domain Consultant & Designer
           </span>
         </a>
-
-        {visitorCount !== null && (
-          <div className="flex items-center justify-center gap-1 md:gap-2 text-sm md:text-base font-medium">
-            <span role="img" aria-label="visitors">👁️</span>
-            <span>{visitorCount.toLocaleString()}</span>
-          </div>
-        )}
 
         <div className="hidden md:flex items-center gap-8 text-lg font-medium">
           <a href="#about" className="hover:text-cyan-300 transition-colors duration-300">About</a>

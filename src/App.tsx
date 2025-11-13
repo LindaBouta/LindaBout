@@ -133,11 +133,6 @@ async function safeJsonFetch<T = any>(url: string): Promise<T | null> {
 export default function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showExit, setShowExit] = useState(false);
-  const [visitorCount, setVisitorCount] = useState<number | null>(null);
-  
-  useEffect(() => {
-    setVisitorCount(getVisitorCount());
-  }, []);
   
   const [showNavbar, setShowNavbar] = useState(true);
 

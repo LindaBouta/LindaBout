@@ -7,6 +7,7 @@
   "dependencies": {
     "@netlify/blobs": "^10.3.1",
     "@radix-ui/react-slot": "^1.2.3",
+    "@vercel/analytics": "^1.5.0",
     "class-variance-authority": "^0.7.1",
     "lucide-react": "^0.552.0",
     "react": "^19.2.0",

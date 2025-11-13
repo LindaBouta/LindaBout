@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Analytics } from '@vercel/analytics/react'; // NEW: Added this import
+import { Analytics } from '@vercel/analytics/react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -61,22 +61,29 @@ const cardClass =
 
 
 /******************************
- * GLOBAL VISITOR COUNTER
+ * SIMPLE VISITOR COUNTER using localStorage
  ******************************/
-async function getGlobalVisitorCount(): Promise<number> {
-  try {
-    const res = await fetch("/api/visitor-count", {
-      method: "POST",
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    return data.count ?? 0;
-  } catch (e) {
-    console.warn("Visitor counter error:", e);
-    return 0;
+function getVisitorCount(): number {
+  if (typeof window === 'undefined') return 0;
+  
+  const STORAGE_KEY = 'visitor_count';
+  const VISITOR_KEY = 'has_visited';
+  
+  // Check if this user has visited before
+  const hasVisited = localStorage.getItem(VISITOR_KEY);
+  
+  // Get current count
+  let count = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+  
+  // If first time visitor, increment count
+  if (!hasVisited) {
+    count++;
+    localStorage.setItem(STORAGE_KEY, count.toString());
+    localStorage.setItem(VISITOR_KEY, 'true');
   }
+  
+  return count;
 }
-
 
 /******************************
  * LINKS
@@ -129,7 +136,8 @@ export default function App() {
   const [visitorCount, setVisitorCount] = useState<number | null>(null);
   
   useEffect(() => {
-    getGlobalVisitorCount().then(setVisitorCount);
+    // Set visitor count from localStorage
+    setVisitorCount(getVisitorCount());
   }, []);
   
   // Navbar Scroll disappear
@@ -248,7 +256,7 @@ export default function App() {
    ******************************/
   return (
     <>
-      <Analytics /> {/* NEW: Added Vercel Analytics tracking */}
+      <Analytics />
       <div className="min-h-screen bg-white text-neutral-900 font-sans">
         {/* Mobile Menu */}
         {mobileOpen && (

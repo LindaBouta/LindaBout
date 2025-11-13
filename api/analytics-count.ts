@@ -17,7 +17,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const teamId = process.env.VERCEL_TEAM_ID || 'team_nD2bci00idbqzYclEwlCMHT2';
     const projectId = process.env.VERCEL_PROJECT_ID || 'prj_sfd7VUTew35JJBE23omf8i268sGp';
-    const token = process.env.VERCEL_API_TOKEN || '1mPatKzTOP9WxXfgYFW64geC';
+    const token = process.env.VERCEL_API_TOKEN;
 
     if (!token) {
       console.error('Missing VERCEL_API_TOKEN');

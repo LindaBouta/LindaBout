@@ -61,12 +61,12 @@ const cardClass =
 
 
 /******************************
- * GLOBAL VISITOR COUNTER (UPDATED for Vercel Analytics)
+ * GLOBAL VISITOR COUNTER
  ******************************/
 async function getGlobalVisitorCount(): Promise<number> {
   try {
-    const res = await fetch("/api/analytics-count", { // CHANGED: Updated endpoint
-      method: "GET",
+    const res = await fetch("/api/visitor-count", {
+      method: "POST",
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();

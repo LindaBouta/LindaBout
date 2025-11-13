@@ -61,20 +61,28 @@ const cardClass =
 
 
 /******************************
- * GLOBAL VISITOR COUNTER from Vercel Analytics API
+ * SIMPLE VISITOR COUNTER using localStorage
  ******************************/
-async function getGlobalVisitorCount(): Promise<number> {
-  try {
-    const res = await fetch("/api/analytics-count", {
-      method: "GET",
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    return data.count ?? 0;
-  } catch (e) {
-    console.warn("Visitor counter error:", e);
-    return 0;
+function getVisitorCount(): number {
+  if (typeof window === 'undefined') return 0;
+  
+  const STORAGE_KEY = 'visitor_count';
+  const VISITOR_KEY = 'has_visited';
+  
+  // Check if this user has visited before
+  const hasVisited = localStorage.getItem(VISITOR_KEY);
+  
+  // Get current count
+  let count = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+  
+  // If first time visitor, increment count
+  if (!hasVisited) {
+    count++;
+    localStorage.setItem(STORAGE_KEY, count.toString());
+    localStorage.setItem(VISITOR_KEY, 'true');
   }
+  
+  return count;
 }
 
 /******************************

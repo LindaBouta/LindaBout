@@ -4,8 +4,8 @@
     "version": 4
   },
   "items": [
-    { "name": "PlumberInSydney.com", "percentOff": 20 },
-    { "name": "LegalFirmLondon.com", "amountOff": 200 },
-    { "name": "ClimateFinance.io", "percentOff": 15 }
+    { "name": "ChicDrift.com", "percentOff": 20 },
+    { "name": "YindeeThaiMassage.com", "amountOff": 200 },
+    { "name": "GhostSmile.com", "percentOff": 15 }
   ]
 }
